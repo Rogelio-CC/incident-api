@@ -4,6 +4,7 @@ import { envs } from './config/envs.plugin';
 import { MongoDatabase } from './data/init';
 import { IncidentModel } from './data/models/incident.model';
 import { AppRoutes } from './presentation/controllers/routes';
+import { emailJob } from '../domain/jobs/email.job';
 
 const app= express();
 
@@ -18,6 +19,7 @@ app.use(AppRoutes.routes);
 
 
 app.listen(3000, ()=>{
-    console.log("El servidor esta corriendo")
+    console.log("El servidor esta corriendo");
+    emailJob();
 })
 
